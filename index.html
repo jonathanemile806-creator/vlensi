@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Vlensí Villion</title>
+    <style>
+        /* ==========================================================================
+           1. CORE SYSTEM LUXURY RESETS & SCREEN FRAME ARCHITECTURE
+           ========================================================================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            background-color: #050505;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto; /* Ultra-smooth vertical scroll engine track enabled */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Fixed High-Fashion Background Mask Shroud */
+        .vlensivillion-wallpaper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #0a0a0a 0%, #050505 50%, #000000 100%), url('showroom_model_bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            filter: brightness(25%) contrast(105%);
+            z-index: 1;
+        }
+
+        /* ==========================================================================
+           2. FIXED HEADER UTILITY PANEL NAVIGATION MATRIX (BALENCIAGA BASIS)
+           ========================================================================== */
+        .luxury-utility-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(10, 10, 10, 0.65);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            z-index: 10;
+        }
+
+        .top-action-corridor {
+            width: 100%;
+            height: 65px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .corner-search-module {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .corner-search-module:hover {
+            opacity: 1;
+        }
+
+        .search-stub-input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #ffffff;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            width: 90px;
+            font-weight: 300;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 2px;
+            transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .search-stub-input:focus {
+            width: 150px;
+            border-bottom-color: #ffffff;
+        }
+
+        .curated-trend-anchor {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 400;
+            color: #ffffff;
+            text-shadow: 0px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .category-filter-corridor {
+            width: 100%;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 35px;
+            padding: 0 20px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        
+        .category-filter-corridor::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-pill-link {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 300;
+            color: #777777;
+            cursor: pointer;
+            transition: color 0.3s ease, letter-spacing 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .category-pill-link:hover, .category-pill-link.active {
+            color: #ffffff;
+            letter-spacing: 4px;
+        }
+
+        /* ==========================================================================
+           3. CENTRAL IDENTITY LOGO MOUNT PLACEMENT
+           ========================================================================== */
+        .interface-corridor {
+            position: relative;
+            width: 100%;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+            padding: 190px 24px 100px 24px; /* Extends clearance space to prevent overlapping templates */
+        }
+
+        .header-identity-block {
+            text-align: center;
+            margin-bottom: 90px;
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brand-logo-image {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .brand-fallback-text {
+            font-size: 26px;
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            font-weight: 300;
+            color: #ffffff;
+            margin-top: 10px;
+            text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6);
+        }
+
+        /* ==========================================================================
+           4. UNCOMPROMISED SPACIOUS DISPLAY GRID (LOUIS VUITTON EDITORIAL RATIO)
+           ========================================================================== */
+        .showroom-container {
+            display: grid;
+            grid-template-columns: repeat(2, 430px); /* Spacious 2-column widescreen layout protects product text separation */
+            gap: 90px 60px;
+            justify-content: center;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 980px) {
+            .showroom-container { grid-template-columns: repeat(2, 330px); gap: 60px 40px; }
+            .top-action-corridor { padding: 0 20px; }
+        }
+        @media (max-width: 750px) {
+            .showroom-container { grid-template-columns: repeat(1, 100%); max-width: 440px; gap: 70px 0; }
+            .interface-corridor { padding-top: 160px; }
+        }
+
+        /* Left-Aligned Luxury Shop Card Styling Elements */
+        .product-card {
+            text-align: left;
+            background-color: transparent;
+            padding: 0;
+            border: none;
+            transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .product-card:hover {
+            opacity: 0.85;
+        }
+
+        /* 1:1 Sharp Geometric Display Box */
+        .image-placeholder {
+            width: 100%;
+            padding-top: 100%; 
+            background-color: rgba(18, 18, 18, 0.65); /* Translucent velvet layout plate */
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .product-meta-block {
+            padding: 20px 4px 0 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        /* Matte Red High-Fashion Suffix Tracking Labels */
+        .sold-out-badge {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #ff3b30; 
+            display: inline-block;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fixed Shroud Background System Sheet -->
+    <div class="vlensivillion-wallpaper"></div>
+
+    <!-- Fixed Balenciaga Layout Core Top Header Bar Container -->
+    <header class="luxury-utility-bar">
+        <div class="top-action-corridor">
+            <div class="corner-search-module">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" class="search-stub-input" placeholder="SEARCH...">
+            </div>
+            <div class="curated-trend-anchor">HOTTEST PICKS</div>
+        </div>
+
+        <nav class="category-filter-corridor">
+            <span class="category-pill-link active">ALL COLLECTION</span>
+            <span class="category-pill-link">TEES</span>
+            <span class="category-pill-link">HOODIES</span>
+            <span class="category-pill-link">OUTERWEAR</span>
+            <span class="category-pill-link">SHOES</span>
+            <span class="category-pill-link">ACCESSORIES</span>
+        </nav>
+    </header>
+
+    <!-- Main Active Immersive Showroom Display Layer -->
+    <div class="interface-corridor">
+        
+            <img src="vlensi_cursive_clean.png" class="brand-logo-image" alt="Vlensí Villion" onerror="this.style.display='none'; document.getElementById('fallback-text-id').style.display='block';">
+            <div id="fallback-text-id" class="brand-fallback-text" style="display:none;">VLENSÍ VILLION</div>
+        </div>
+
+        <div class="showroom-container">
+            <!-- Card 01 -->
+            <div class="product-card">
+                <div class="image-placeholder"></div>
+                <div class="product-meta-block">
